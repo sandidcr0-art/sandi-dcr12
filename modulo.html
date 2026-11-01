@@ -1,1 +1,190 @@
-kalkulator modulo
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Modulo - Sandi Dwi Cahya Ramdan - 262505011</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2563eb;
+        }
+
+        h3 {
+            margin-top: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .hasil {
+            margin-top: 15px;
+            padding: 15px;
+            background: #eff6ff;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .true {
+            color: green;
+        }
+
+        .false {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Kalkulator Modulo</h2>
+
+    <h3>1. Menghitung Modulo</h3>
+
+    <label>Masukkan Nilai A:</label>
+    <input type="number" id="nilaiA" placeholder="Contoh: 17">
+
+    <label>Masukkan Nilai M:</label>
+    <input type="number" id="nilaiM" placeholder="Contoh: 5">
+
+    <button onclick="hitungModulo()">Hitung Modulo</button>
+
+    <div class="hasil" id="hasilModulo">
+        Hasil akan muncul di sini
+    </div>
+
+    <h3>2. Pengecekan Kongruensi</h3>
+
+    <label>Masukkan Nilai A:</label>
+    <input type="number" id="kongA" placeholder="Contoh: 17">
+
+    <label>Masukkan Nilai B:</label>
+    <input type="number" id="kongB" placeholder="Contoh: 7">
+
+    <label>Masukkan Modulus M:</label>
+    <input type="number" id="kongM" placeholder="Contoh: 5">
+
+    <button onclick="cekKongruensi()">Cek Kongruensi</button>
+
+    <div class="hasil" id="hasilKongruensi">
+        Hasil pengecekan akan muncul di sini
+    </div>
+
+</div>
+
+<script>
+    function modulo(a, m) {
+        return ((a % m) + m) % m;
+    }
+
+    function hitungModulo() {
+        let a = Number(document.getElementById("nilaiA").value);
+        let m = Number(document.getElementById("nilaiM").value);
+        let hasil = document.getElementById("hasilModulo");
+
+        if (
+            document.getElementById("nilaiA").value === "" ||
+            document.getElementById("nilaiM").value === "" ||
+            m <= 0
+        ) {
+            hasil.innerHTML = "Masukkan angka yang valid! M harus lebih dari 0.";
+            return;
+        }
+
+        let sisa = modulo(a, m);
+
+        hasil.innerHTML = a + " mod " + m + " = " + sisa;
+    }
+
+    function cekKongruensi() {
+        let a = Number(document.getElementById("kongA").value);
+        let b = Number(document.getElementById("kongB").value);
+        let m = Number(document.getElementById("kongM").value);
+
+        let hasil = document.getElementById("hasilKongruensi");
+
+        if (
+            document.getElementById("kongA").value === "" ||
+            document.getElementById("kongB").value === "" ||
+            document.getElementById("kongM").value === "" ||
+            m <= 0
+        ) {
+            hasil.innerHTML = "Masukkan angka yang valid! M harus lebih dari 0.";
+            return;
+        }
+
+        let sisaA = modulo(a, m);
+        let sisaB = modulo(b, m);
+
+        if (sisaA === sisaB) {
+            hasil.innerHTML =
+                "<span class='true'>TRUE</span><br>" +
+                a + " ≡ " + b + " (mod " + m + ")" +
+                "<br>Keduanya memiliki sisa " + sisaA;
+        } else {
+            hasil.innerHTML =
+                "<span class='false'>FALSE</span><br>" +
+                a + " ≢ " + b + " (mod " + m + ")" +
+                "<br>Sisa A = " + sisaA +
+                ", Sisa B = " + sisaB;
+        }
+    }
+</script>
+
+</body>
+</html>
