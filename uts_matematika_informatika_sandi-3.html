@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bukti Belajar | Sandi Dwi Cahya Ramdan</title>
+<style>
+:root{--bg:#08111f;--panel:#111e31;--panel2:#172840;--text:#edf4ff;--muted:#a9bad0;--accent:#62d6c5;--accent2:#78a9ff;--line:#2a3c55}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#08111f,#10243a);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+header{padding:34px 7%;background:linear-gradient(110deg,#102c46,#173e55);border-bottom:1px solid var(--line)}
+header h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px}header p{margin:0;color:#d3e6f5}
+nav{display:flex;gap:10px;flex-wrap:wrap;padding:14px 7%;background:#0b1727;position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
+nav a{color:var(--text);text-decoration:none;padding:8px 13px;border:1px solid var(--line);border-radius:20px;font-size:14px}nav a:hover{background:#1b3852}
+main{max-width:1100px;margin:auto;padding:28px 18px 60px}.section-title{margin:8px 0 4px;font-size:30px}.subtitle{color:var(--muted);margin:0 0 24px}
+.profile,.calculator{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 12px 30px #0002}
+.profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.profile-item{background:var(--panel2);padding:12px;border-radius:12px}.profile-item small{display:block;color:var(--muted)}
+.calculator h3{margin:0 0 14px;color:var(--accent);font-size:21px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+label{display:block;color:var(--muted);font-size:14px;margin-bottom:5px}input,select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#091525;color:var(--text);font-size:16px;outline:none}input:focus,select:focus{border-color:var(--accent2)}
+button{margin-top:14px;padding:11px 18px;border:0;border-radius:10px;background:var(--accent);color:#06221f;font-weight:bold;font-size:15px;cursor:pointer}button:hover{filter:brightness(1.08)}
+.result{margin-top:14px;padding:13px 15px;background:#0a1727;border:1px solid var(--line);border-radius:11px;min-height:48px;overflow-wrap:anywhere}.muted{color:var(--muted)}.tag{display:inline-block;color:var(--accent);font-size:12px;border:1px solid #34766f;padding:3px 9px;border-radius:20px;margin-bottom:8px}
+footer{text-align:center;color:var(--muted);padding:24px;border-top:1px solid var(--line)}
+@media(max-width:600px){header{padding:26px 18px}nav{position:static;padding:12px 18px}.calculator,.profile{padding:17px}}
+</style>
+</head>
+<body>
+<header>
+  <span class="tag">PORTOFOLIO PEMBELAJARAN</span>
+  <h1>Sandi Dwi Cahya Ramdan</h1>
+  <p>Website Biodata Online · Matematika Informatika · TA 20261</p>
+</header>
+<nav>
+  <a href="#biodata">Biodata</a><a href="#bukti">Bukti Belajar</a><a href="#modulo">Modulo</a>
+  <a href="#kongruensi">Kongruensi</a><a href="#bilangan">Sistem Bilangan</a><a href="#kombinatorika">Kombinatorika</a>
+</nav>
+<main>
+<section id="biodata" class="profile">
+  <h2 class="section-title">Biodata</h2>
+  <p class="muted">Identitas mahasiswa</p>
+  <div class="profile-grid">
+    <div class="profile-item"><small>Nama</small><strong>Sandi Dwi Cahya Ramdan</strong></div>
+    <div class="profile-item"><small>NIM</small><strong>262505011</strong></div>
+    <div class="profile-item"><small>Program Studi</small><strong>Sistem Informasi</strong></div>
+    <div class="profile-item"><small>Mata Kuliah</small><strong>Matematika Informatika</strong></div>
+    <div class="profile-item"><small>Dosen</small><strong>Iin, M.Kom</strong></div>
+  </div>
+</section>
+
+<section id="bukti">
+<h2 class="section-title">Bukti Belajar</h2>
+<p class="subtitle">Perjalanan belajar Matematika Informatika bersama Pa Iin TA 20261</p>
+
+<div class="calculator" id="modulo">
+<h3>Level 1 — Modulo Calculator</h3>
+<p class="muted">Menghitung sisa pembagian a oleh modulus m.</p>
+<div class="grid">
+ <div><label for="modA">Bilangan a</label><input id="modA" type="number" step="1" value="17"></div>
+ <div><label for="modM">Modulus m (positif)</label><input id="modM" type="number" step="1" min="1" value="5"></div>
+</div>
+<button onclick="hitungModulo()">Hitung Modulo</button><div class="result" id="modResult" aria-live="polite">Hasil akan muncul di sini.</div>
+</div>
+
+<div class="calculator" id="kongruensi">
+<h3>Level 2 — Congruence Checker</h3>
+<p class="muted">a kongruen dengan b modulo m jika m membagi (a − b).</p>
+<div class="grid">
+ <div><label for="conA">Bilangan a</label><input id="conA" type="number" step="1" value="17"></div>
+ <div><label for="conB">Bilangan b</label><input id="conB" type="number" step="1" value="2"></div>
+ <div><label for="conM">Modulus m (positif)</label><input id="conM" type="number" step="1" min="1" value="5"></div>
+</div>
+<button onclick="cekKongruensi()">Periksa Kongruensi</button><div class="result" id="conResult" aria-live="polite">Hasil pemeriksaan akan muncul di sini.</div>
+</div>
+
+<div class="calculator" id="bilangan">
+<h3>Level 5 — Number System Calculator</h3>
+<p class="muted">Konversi bilangan ke basis biner, desimal, oktal, dan heksadesimal.</p>
+<div class="grid">
+ <div><label for="numberInput">Bilangan</label><input id="numberInput" type="text" value="1010" autocomplete="off"></div>
+ <div><label for="baseInput">Basis asal</label><select id="baseInput"><option value="2">Biner (2)</option><option value="10">Desimal (10)</option><option value="8">Oktal (8)</option><option value="16">Heksadesimal (16)</option></select></div>
+</div>
+<button onclick="konversiBilangan()">Konversi</button><div class="result" id="baseResult" aria-live="polite">Hasil konversi akan muncul di sini.</div>
+</div>
+
+<div class="calculator" id="kombinatorika">
+<h3>Level 6 — Combinatorics Calculator</h3>
+<p class="muted">Menghitung permutasi P(n,r) dan kombinasi C(n,r), dengan 0 ≤ r ≤ n.</p>
+<div class="grid">
+ <div><label for="nilaiN">Nilai n</label><input id="nilaiN" type="number" min="0" step="1" value="5"></div>
+ <div><label for="nilaiR">Nilai r</label><input id="nilaiR" type="number" min="0" step="1" value="2"></div>
+</div>
+<button onclick="hitungKombinatorika()">Hitung</button><div class="result" id="combResult" aria-live="polite">Hasil perhitungan akan muncul di sini.</div>
+</div>
+</section>
+</main>
+<footer>© 2026 Sandi Dwi Cahya Ramdan · Bukti Belajar Matematika Informatika</footer>
+
+<script>
+function bilanganBulat(id){
+ const raw=document.getElementById(id).value;
+ if(raw.trim()==='') return null;
+ const n=Number(raw);
+ return Number.isSafeInteger(n)?n:null;
+}
+function tampil(id,html){document.getElementById(id).innerHTML=html;}
+function validasiModulus(m){return Number.isSafeInteger(m)&&m>0;}
+
+function hitungModulo(){
+ const a=bilanganBulat('modA'),m=bilanganBulat('modM');
+ if(a===null||!validasiModulus(m)){tampil('modResult','Input tidak valid. a harus bilangan bulat dan m harus bilangan bulat positif.');return;}
+ const r=((a%m)+m)%m;
+ tampil('modResult',`<strong>${a} mod ${m} = ${r}</strong><br>Proses: ${a} = (${Math.floor(a/m)}) × ${m} + ${a-Math.floor(a/m)*m}. Jadi sisanya adalah ${r}.`);
+}
+function cekKongruensi(){
+ const a=bilanganBulat('conA'),b=bilanganBulat('conB'),m=bilanganBulat('conM');
+ if(a===null||b===null||!validasiModulus(m)){tampil('conResult','Input tidak valid. a dan b harus bilangan bulat, sedangkan m harus bilangan bulat positif.');return;}
+ const selisih=a-b,ra=((a%m)+m)%m,rb=((b%m)+m)%m,ok=ra===rb;
+ tampil('conResult',`<strong>${a} ${ok?'≡':'≢'} ${b} (mod ${m}) — ${ok?'KONGRUEN':'TIDAK KONGRUEN'}</strong><br>Proses: a − b = ${selisih}. ${selisih} ${selisih%m===0?'habis':'tidak habis'} dibagi ${m}. Sisa a mod m = ${ra}; sisa b mod m = ${rb}.`);
+}
+function konversiBilangan(){
+ const input=document.getElementById('numberInput').value.trim(),base=Number(document.getElementById('baseInput').value);
+ if(!input){tampil('baseResult','Masukkan bilangan terlebih dahulu.');return;}
+ // Validasi karakter sesuai basis sebelum proses konversi.
+ const patterns={2:/^-?[01]+$/,8:/^-?[0-7]+$/,10:/^-?[0-9]+$/,16:/^-?[0-9a-fA-F]+$/};
+ if(!patterns[base].test(input)){tampil('baseResult','Input tidak valid untuk basis yang dipilih. Periksa digit bilangan.');return;}
+ // Konversi basis umum menggunakan BigInt dengan parser manual.
+ try{
+   let sign=1n,s=input;if(s[0]==='-'){sign=-1n;s=s.slice(1);}
+   const chars='0123456789ABCDEF';let v=0n;
+   for(const ch of s.toUpperCase()){const d=chars.indexOf(ch);if(d<0||d>=base)throw Error();v=v*BigInt(base)+BigInt(d);}
+   v*=sign;
+   const cv=(b)=>v.toString(b).toUpperCase();
+   tampil('baseResult',`<strong>Hasil Konversi</strong><br>Biner: ${cv(2)}<br>Desimal: ${cv(10)}<br>Oktal: ${cv(8)}<br>Heksadesimal: ${cv(16)}`);
+ }catch(e){tampil('baseResult','Input tidak valid untuk basis yang dipilih.');}
+}
+function faktorialBig(n){let hasil=1n;for(let i=2n;i<=n;i++)hasil*=i;return hasil;}
+function hitungKombinatorika(){
+ const n=bilanganBulat('nilaiN'),r=bilanganBulat('nilaiR');
+ if(n===null||r===null||n<0||r<0||r>n||n>500){tampil('combResult','Input tidak valid. Pastikan 0 ≤ r ≤ n dan n tidak lebih dari 500.');return;}
+ const N=BigInt(n),R=BigInt(r);
+ const perm=faktorialBig(N)/faktorialBig(N-R);
+ const komb=faktorialBig(N)/(faktorialBig(R)*faktorialBig(N-R));
+ tampil('combResult',`<strong>Permutasi</strong><br>P(${n},${r}) = ${n}! / (${n}-${r})! = ${perm}<br><br><strong>Kombinasi</strong><br>C(${n},${r}) = ${n}! / (${r}! × (${n}-${r})!) = ${komb}<br><br>Permutasi memperhatikan urutan, sedangkan kombinasi tidak memperhatikan urutan.`);
+}
+</script>
+</body>
+</html>
